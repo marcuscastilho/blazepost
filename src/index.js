@@ -19,13 +19,13 @@ app.get("/", (request, response) => {
   response.json({ status });
 });
 
-app.get("/start", async (request, response) => {
+app.get("/start", (request, response) => {
   status = true;
-  start();
+  // start();
   return response.json({ desc: "ligado" });
 });
 
-app.get("/end", async (request, response) => {
+app.get("/end", (request, response) => {
   status = false;
   return response.json({ desc: "desligado" });
 });
