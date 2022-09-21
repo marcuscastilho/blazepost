@@ -1,9 +1,39 @@
 require("dotenv").config();
+
 const axios = require("axios");
+const express = require("express");
+const cors = require("cors");
+
 const { BlazeHistory } = require("./database/mongodb/models/BlazeHistory");
 
+//start app
+const app = express();
+
+//middlewares
+app.use(cors());
+app.use(express.json());
+
+let status = false;
+
+app.get("/", (request, response) => {
+  response.json({ status });
+});
+
+app.get("/start", async (request, response) => {
+  status = true;
+  start();
+  return response.json({ desc: "ligado" });
+});
+
+app.get("/end", async (request, response) => {
+  status = false;
+  return response.json({ desc: "desligado" });
+});
+
 const start = async () => {
-  const { data: blaze_data} = await axios.get(
+  if (!status) return;
+
+  const { data: blaze_data } = await axios.get(
     "https://blaze.com/api/crash_games/recent"
   );
 
@@ -19,7 +49,8 @@ const start = async () => {
       });
     }
   }
-  start()
+  return start();
 };
 
-start();
+//listen
+app.listen(process.env.PORT || 3000);
