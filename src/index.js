@@ -49,7 +49,7 @@ const start = async () => {
       });
     }
   }
-  return start();
+  start();
 };
 
 //listen
