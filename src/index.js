@@ -49,6 +49,7 @@ const start = async () => {
       });
     }
   }
+  start();
 };
 
 //listen
