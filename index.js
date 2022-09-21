@@ -1,6 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
-const { BlazeHistory } = require("./database/mongodb/models/BlazeHistory");
+const { BlazeHistory } = require("./src/database/mongodb/models/BlazeHistory");
 
 const start = async () => {
   const { data: blaze_data} = await axios.get(
