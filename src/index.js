@@ -19,9 +19,9 @@ app.get("/", (request, response) => {
   response.json({ status });
 });
 
-app.get("/start", (request, response) => {
+app.get("/start", async (request, response) => {
   status = true;
-  // start();
+  start();
   return response.json({ desc: "ligado" });
 });
 
@@ -49,6 +49,10 @@ const start = async () => {
       });
     }
   }
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  await delay(5000);
+
   start();
 };
 
