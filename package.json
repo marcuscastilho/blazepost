@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index",
-    "start": "node src/index"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
